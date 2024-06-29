@@ -1,5 +1,4 @@
 import numpy as np
-import tensorflow as tf
 
 a = np.array(1) # scalar
 
