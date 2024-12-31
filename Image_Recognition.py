@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 from tqdm import tqdm
-from helper_functions import accuracy_fn
 import random
 import os
 
@@ -119,6 +118,12 @@ def test_step(data_loader: torch.utils.data.DataLoader,
         test_loss /= len(data_loader)
         test_acc /= len(data_loader)
         print(f"Test loss: {test_loss:.5f} | Test accuracy: {test_acc:.2f}%\n")
+
+# Define accuracy function
+def accuracy_fn(y_true, y_pred):
+    correct = (y_true == y_pred).sum().item()
+    total = y_true.size(0)
+    return (correct / total) * 100
 
 # Evaluate model function
 def eval_model(model: torch.nn.Module, 
